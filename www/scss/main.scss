@@ -1,0 +1,19 @@
+// Bootstrap variables and mixins
+@import "components/bootstrap/_variables";
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+
+// Fonts
+@import "components/fontawesome/_variables";
+@import "../../bower_components/fontawesome/scss/font-awesome.scss";
+
+// Components styles
+@import "components/font-awesome-animation";
+
+// Core variables
+@import "common/_global";
+
+// Main styles
+@import "layout/index";
+
+// Pages
+//@import "pages/homepage";

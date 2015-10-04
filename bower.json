@@ -1,0 +1,23 @@
+{
+  "name": "koisek",
+  "version": "1.0.0",
+  "authors": [
+    "Martin Dendis <dendimar@fel.cvut.cz>"
+  ],                                
+  "license": "MIT https://spdx.org/licenses/MIT#licenseText",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {          
+    "cordova": "~3.4.0",   
+    "fastclick": "~1.0.3",      
+    "angularjs": "~1.2.23",  
+    "fontawesome": "~4.3.0",
+    "bootstrap-sass-official": "~3.3.4"
+  }
+}

@@ -1,0 +1,293 @@
+//
+// Global variables
+// --------------------------------------------------
+
+$mp-default:				lighten($gray-base, 70%) !default; // #f2f2f2
+$mp-light:					lighten($gray-base, 95%) !default; // #f2f2f2
+$mp-lighter:				lighten($gray-base, 98%) !default; // #fafafa
+$mp-gold:						#f1c40f;
+
+$mp-box-shadow:				0px 0px 3px rgba(84, 84, 84, 0.2);
+$box-default-space:			$navbar-margin-bottom;
+
+html, body {
+	height: 100%;
+}
+body {
+	font-weight: 500;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+a, .btn {
+	&:focus {
+		outline: none;
+	}
+}
+
+.hr {
+	border-bottom: solid 1px $gray-lighter;
+	display: block;
+	margin: 20px 0;
+	
+	&-sm {
+		margin: 10px 0;
+	}
+}
+
+label {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.text-bold {
+	font-weight: 700;
+}
+.huge {
+	font-size: 40px;
+	font-weight: 700;
+}
+
+.mb--default{
+	margin-bottom: $box-default-space;
+}
+.mt--large {
+	margin-top: $box-default-space*2;
+}
+//Popover
+.popover-title {
+	font-weight: 500;
+}
+//Default Box
+.box {
+	margin-bottom: (2*$box-default-space);
+	
+	@media (min-width: $screen-md-min) {
+		margin-bottom: (3*$box-default-space);
+	}
+	
+	&-title {
+		text-transform: uppercase;
+		margin: $box-default-space 0 $box-default-space;
+		font-size: 18px;
+		
+		@media (min-width: $screen-md-min) {
+			font-size: 22px;
+		}
+	}
+	
+	.box--panel {
+		margin-top: 0;
+	}
+}
+
+//arrow 
+.arrow {
+	position: relative;
+  overflow: visible;
+	  
+	&-left {
+		@extend .arrow;
+		
+		&:after,
+		&:before {
+			right: 100%;
+			top: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		&:after {
+			border-right-color: #fff;
+			border-width: 10px;
+			margin-top: -10px;
+		}
+		&:before {
+			border-right-color: $gray-lighter;
+			border-width: 11px;
+			margin-top: -11px;
+		}
+	}
+
+	&-right {
+		@extend .arrow;
+		
+		&:after,
+		&:before {
+			left: 100%;
+			top: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		&:after {
+			border-left-color: #fff;
+			border-width: 10px;
+			margin-top: -10px;
+		}
+		&:before {
+			border-left-color: $gray-lighter;
+			border-width: 11px;
+			margin-top: -11px;
+		}
+	}
+}
+
+/*
+ * Hodnoceni uzivatelu / hvezdicky
+ *
+ * Ukazka
+	<div class="reviews reviews--xl">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+  </div>
+*/
+.reviews {
+	> i {
+		padding: 0 5px;
+	}
+	.fa-star,
+	.glyphicon-star {
+		color: $mp-gold;
+	}
+	&-l {
+		font-size: 16px;
+	}
+	&-xl {
+		font-size: ($font-size-base+10px);
+	}
+	&-xxl {
+		font-size: ($font-size-base*3);
+	}
+	&-text {
+		font-size: $font-size-base;
+		vertical-align: middle;
+	}
+	
+	&-info {
+		> i {
+			padding: 0;
+		}
+	}
+}
+
+//animation for arrow
+.rotate--arrow {
+	.fa {
+		transform: rotate(180deg);
+		transition: all 400ms ease-in-out;
+		transition-delay: 400ms;
+	}
+						
+	&.collapsed {
+		.fa {
+			transform: rotate(0deg);
+		}
+	}
+}
+
+// Table
+.table-block {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+	
+	&__row {
+		display: table-row;
+	}
+	
+	&__cell {
+		display: table-cell;
+		width: 1%;
+	}
+}
+
+// Modal popup
+.modal {
+	.recover-password {
+		display: block;
+		margin-top: 15px;
+		text-align: right;
+	}
+	.page-header {
+		padding-bottom: 0px;
+		margin: 10px 0 18px;
+	}
+}
+
+// Google maps
+#map-canvas {
+	width: 100%;
+	height: 100%;
+}
+// Google address
+.pac-container {
+  z-index: 1140;
+}
+
+// Checkbox individual
+.regular-checkbox {
+	-webkit-appearance: none;
+	display: inline-block;
+	width: 22px;
+	height: 20px;
+	color: $gray;
+	vertical-align: sub;
+	line-height: 20px!important;
+	
+	border: 0; //oprava pro iOS
+	background: transparent; //oprava pro iOS
+	
+	&:after {
+		font: normal normal normal 24px/1 FontAwesome;
+		content: "\f096";
+	}
+	&:focus {
+		outline: none !important;
+	}
+}
+.regular-checkbox:checked:after {
+	content: '\f046';
+	color: $brand-primary;
+}
+
+.regular-checkbox[disabled]:after {
+	color: gray;
+}
+
+// Errors
+.well {
+	&__error {
+		margin: 30px 0 50px;
+	}
+	&__title {
+		margin: 0 0 10px;
+	}
+	&__footer {
+		margin-top: 20px;
+		text-align: center;
+	}
+}
+
+.background-pulse {
+	animation: background-pulse-kf 2s infinite ease-in-out;
+	animation-fill-mode: both;
+}
+
+@keyframes background-pulse-kf {
+	0%, 100% { 
+		background-color: white;
+	} 50% { 
+		background-color: #bfeefc;
+	}
+}

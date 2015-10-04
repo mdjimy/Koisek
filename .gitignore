@@ -1,0 +1,13 @@
+!.gitkeep
+!.gitignore
+/.sass-cache/
+/bower_components/
+/node_modules/
+/platforms/
+/plugins/
+/www/css/
+/www/fonts/bootstrap/
+/www/fonts/fontawesome/
+/www/js/
+
+
