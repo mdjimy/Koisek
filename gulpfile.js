@@ -1,5 +1,7 @@
 // Basic Gulp File
-//
+
+var debug = true;
+
 var del = require('del'),
     gulp = require('gulp');
 var gulpsync = require('gulp-sync')(gulp),
@@ -66,7 +68,31 @@ gulp.task('scss', function() {
 
 // Angular JS
 gulp.task('angular-js', function() {
-    return gulp.src(config.bowerDir + '/angularjs/angular.min.js')
+    return gulp.src(config.bowerDir + '/angular/angular.min.js')
+        .pipe(gulp.dest(config.jsVendorDir));
+});
+
+// Angular-Route JS
+gulp.task('angular-route-js', function() {
+    return gulp.src(config.bowerDir + '/angular-route/angular-route.min.js')
+        .pipe(gulp.dest(config.jsVendorDir));
+});
+
+// Angular-Cookies JS
+gulp.task('angular-cookies-js', function() {
+    return gulp.src(config.bowerDir + '/angular-cookies/angular-cookies.min.js')
+        .pipe(gulp.dest(config.jsVendorDir));
+});
+
+// Angular-Sanitize JS
+gulp.task('angular-sanitize-js', function() {
+    return gulp.src(config.bowerDir + '/angular-sanitize/angular-sanitize.min.js')
+        .pipe(gulp.dest(config.jsVendorDir));
+});
+
+// Angular-Localization JS
+gulp.task('angular-localization-js', function() {
+    return gulp.src(config.bowerDir + '/angular-localization/angular-localization.min.js')
         .pipe(gulp.dest(config.jsVendorDir));
 });
 
@@ -97,13 +123,23 @@ gulp.task('cordova-js', function() {
 });
 
 // Vendor JS
-gulp.task('js-vendor', ['angular-js', 'bootstrap-js', 'fastclick-js', 'jquery-js', 'cordova-js']);
+gulp.task('js-vendor', [
+    'angular-js', 
+    'angular-route-js',
+    'angular-cookies-js', 
+    'angular-sanitize-js', 
+    'angular-localization-js', 
+    'bootstrap-js', 
+    'fastclick-js', 
+    'jquery-js', 
+    'cordova-js'
+]);
 
 // Src JS
 gulp.task('js-src', function() {
-    return gulp.src(config.jsSrcDir + '/**/*.js')
-        .pipe(uglify())
-        .pipe(gulp.dest(config.jsDir));
+    var cmd = gulp.src(config.jsSrcDir + '/**/*.js');
+    return debug || (cmd = cmd.pipe(uglify())),
+        cmd.pipe(gulp.dest(config.jsDir));
 });
 
 gulp.task('js', ['js-src', 'js-vendor']);
@@ -111,7 +147,7 @@ gulp.task('js', ['js-src', 'js-vendor']);
 /************************************ Main ************************************/
 
 // Rerun the task when a file changes
-gulp.task('watch', function() {
+gulp.task('watch', ['default'], function() {
     gulp.watch(config.sassDir + '/**/*.scss', ['scss']);
     gulp.watch(config.jsSrcDir + '/**/*.js', ['js-src']);
 });

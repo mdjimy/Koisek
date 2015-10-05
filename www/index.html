@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="App">
     <head>
         <meta charset="utf-8" />
 		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
@@ -11,31 +11,84 @@
         <title>Hello World</title>
 
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		
+
 		<!-- cordova.js is injected on app build, do not remove!!! -->
         <script type="text/javascript" src="cordova.js"></script>
 
 		<!-- include js libraries -->
         <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-cookies.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-localization.min.js"></script>
         <script type="text/javascript" src="js/vendor/fastclick.min.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.min.js"></script>
         <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+		<!-- http://gromo.github.io/jquery.scrollbar/ -->
+        <script type="text/javascript" src="js/vendor/jquery.scrollbar.min.js"></script>
+		<!-- https://github.com/jakiestfu/Snap.js#settings-and-defaults -->
+        <script type="text/javascript" src="js/vendor/snap.min.js"></script>
+
 
 		<!-- browser cordova for testing in browser, remove before build!!! -->
         <script type="text/javascript" src="js/vendor/cordova/cordova.browser.js"></script>
 
+
 		<!-- app scripts -->
-        <script type="text/javascript" src="js/services/cordova.js"></script>
+        <script type="text/javascript" src="js/modules/cordova.js"></script>
+        <script type="text/javascript" src="js/modules/locale.js"></script>
+        <script type="text/javascript" src="js/modules/route.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
     </head>
-	
-    <body ng-app="App" ng-controller="AppCtrl">
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+
+    <body data-ng-controller="AppCtrl as app">
+
+		<div class="snap-drawers">
+
+            <div class="snap-drawer snap-drawer-left scrollbar scrollbar-macosx">
+                <div>
+                    <h3>Snap.js</h3>
+                    <div class="demo-social">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="Snap.js - A Library for creating beautiful mobile shelfs in Javascript" data-url="http://jakiestfu.github.com/Snap.js/" data-count="none" data-via="jakiestfu">Tweet</a>
+                        <a href="https://twitter.com/jakiestfu" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @jakiestfu</a>
+                        <iframe src="http://ghbtns.com/github-btn.html?user=jakiestfu&amp;repo=Snap.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+                    </div>
+                    <h4>Demos</h4>
+                    <ul>
+                        <li><a href="default.html">Default</a></li>
+                        <li><a href="noDrag.html">No Drag</a></li>
+                        <li><a href="dragElement.html">Drag Element</a></li>
+                        <li><a href="rightDisabled.html">Right Disabled</a></li>
+                        <li><a href="hyperextend.html">Hyperextension Disabled</a></li>
+                        <li><a href="skinnyThreshold.html">Skinny Threshold</a></li>
+                        <li><a href="toggles.html">Toggles</a></li>
+                        <li><a href="classNames.html">Class Names</a></li>
+                        <li><a href="expand.html">Expanding</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="ratchet/template.html">Ratchet</a></li>
+                    </ul>
+                    <div>
+                        <p>The Default demo shows basic Snap.js functionality</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non erat ac leo ultrices blandit sed vel risus. Pellentesque facilisis blandit auctor. Maecenas vestibulum vulputate tincidunt. Mauris nec quam libero. Fusce eget ligula non leo varius condimentum quis ac elit. Donec id urna ut neque semper ultrices. Proin ut suscipit felis. Nullam neque felis, ullamcorper scelerisque volutpat vel, vehicula vehicula neque. Aenean scelerisque elit ac erat sagittis ullamcorper.</p>
+                    </div>
+                </div>
             </div>
+            <div class="snap-drawer snap-drawer-right scrollbar scrollbar-macosx"></div>
         </div>
+
+        <div class="snap-content">
+            <div class="app-header">
+				<div class="app-header-wrapper">
+					Default
+				</div>
+            </div>
+
+			<div class="app-content">
+				<div class="app-content-wrapper scrollbar scrollbar-macosx">
+					<!-- <div data-ng-view></div> -->
+				</div>
+			</div>
+        </div>
+
     </body>
 </html>
